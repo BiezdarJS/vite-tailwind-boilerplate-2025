@@ -1,0 +1,56 @@
+@use '../abstracts/' as *;
+// sm
+@forward './header/components-sm/logo';
+@forward './header/components-sm/nav-label';
+@forward './header/components-sm/nav-toggler';
+@forward './header/components-sm/site-heading';
+// md
+@forward './header/components-md/main-nav';
+@forward './header/components-md/main-menu';
+
+.header {
+    background-color: $white;
+    position: relative;
+    &-top {
+			background-color: $white;
+			border-bottom: 1px solid $black;
+			display: flex;
+			align-items: center;
+			padding: 0 30px;
+			position: relative;
+			&__menu-bar {
+				position: relative;
+			}
+			@include tablet {
+					display: block;
+					padding: 0 15px;
+			}
+    }
+    &.fixed {
+			position: fixed;
+    }
+    &-sm {
+			.main-menu {
+				padding: 16px 0;
+			}
+			.header-widget__switcher {
+				padding: 21px 28px;
+			}
+			.site-logo__img {
+				@include desktop-sm {
+					max-width: 100px;
+				}
+			}
+    }
+}
+
+.fixed-headerpusher {
+	height: 60px;
+	@include desktop-md {
+		height: 102px;
+	}
+    
+}
+
+
+

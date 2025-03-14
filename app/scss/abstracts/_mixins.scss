@@ -1,0 +1,47 @@
+@use "sass:color";
+@use "sass:list";
+@use "sass:math";
+
+@mixin shade($type, $color: #000, $depth: 12, $angle: 135deg, $long: false, $fade: false) {
+  $angle: ($angle - 90);
+  $x: 1.5 * cos($angle) + 0px;
+  $y: 1.5 * sin($angle) + 0px;
+  $darken: calc((color.channel($color, "lightness", $space: hsl) / $depth) / 2);
+  $opacify: 0;
+  $shadow: (); 
+
+  @if $long {
+    $darken: 0;
+  }
+
+  @if $fade {
+    $opacify: (opacity($color) / $depth);
+    // Added this for rendering in some browsers, remove if you like.
+    transform: translateZ(0);
+  }
+
+  @for $i from 1 through $depth {
+    $shadow: list.append(
+      $shadow,
+      $i * $x $i * $y 0 hsla(
+        color.channel($color, "hue", $space: hsl),
+        color.channel($color, "saturation", $space: hsl),
+        (color.channel($color, "lightness", $space: hsl) - ($i * $darken)),
+        1 - ($i * $opacify)
+      ),
+      comma
+    );
+  }
+
+  #{"#{$type}-shadow"}: $shadow;
+}
+
+%demo-boxes {
+  background: rgba(black,0.08);
+  border-radius: 1em;
+  box-shadow: inset 1px 1px 2px rgba(black,0.3);
+  color: #fff;
+  margin: 3em auto;
+  max-width: 60em;
+  padding: 1em; 
+}

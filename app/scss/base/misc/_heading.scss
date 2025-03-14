@@ -1,0 +1,67 @@
+@use '../../abstracts/' as *;
+
+.heading {
+  background-color: inherit;
+  font-family: "Roboto Flex", serif;
+  font-size: 6rem;
+  font-weight: 900;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  paint-order: stroke fill;
+  letter-spacing: 4px;
+  margin: 0;
+  text-shadow: 5px 5px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  letter-spacing: 2px;
+  paint-order: stroke;
+  -webkit-text-stroke: 1px #000;
+    @include tablet {
+      font-size: 5rem;
+      line-height: 6rem;
+    }
+  &--yellow {
+    color: #f9e131;
+  }
+  &--hero {
+    font-family: 'Passion One', sans-serif;
+    font-size: 10rem;
+    font-size: 10rem;
+    line-height: 12rem;
+    letter-spacing: 1px;
+    font-weight: 500;
+    word-spacing: 0;
+    margin: 0 0 25px;
+    -webkit-text-stroke: 1px #555;
+    @include shade(text); 
+    @include tablet {
+      font-size: 6rem;
+      line-height: 6rem;
+    }
+    @include desktop-sm {
+      font-size: 8rem;
+      line-height: 8rem;
+    }
+    @include desktop-md {
+      font-size: 10rem;
+      line-height: 8.5rem;
+    }
+  }
+  &--footer {
+    font-size: 4rem;
+    margin: 0 0 25px;
+    -webkit-text-stroke: 1px #555;
+    @include mobile {
+      font-size: 2rem;
+      line-height: 4rem;
+    }
+    @include tablet {
+      font-size: 3rem;
+      line-height: 5rem;
+    }
+
+  }
+  &-wrap {
+    margin-bottom: 50px;
+  }
+}
+

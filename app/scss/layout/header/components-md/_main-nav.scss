@@ -1,0 +1,20 @@
+@use '../../../abstracts' as *;
+
+@include desktop-sm {
+  .main-nav {
+      position: static;
+  }
+}
+
+@include desktop-sm {
+  .main-nav {
+      display: flex;
+      align-items: center;
+      margin: 0 0 0 auto;
+  }
+}
+@include tablet {
+  .main-nav {
+      display: block;
+  }
+}

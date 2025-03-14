@@ -1,0 +1,157 @@
+@use '../../../abstracts' as *;
+
+.main-menu {
+  list-style-type: none;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0;
+  transition: all 0.15s ease-in-out;
+  &__wrap {
+    @include desktop-sm {
+      display: flex;
+    }
+  }
+  @include tablet {
+    display: none;
+  }
+  &--mobile {
+    display: none;
+    @include tablet {
+      display: block;
+    }
+  }
+  &__open {
+    @include tablet {
+      display: block!important;
+      transition: display 0.35s ease-in-out;
+    }
+  }
+  @include tablet {
+    display: none;
+    padding: 20px 0;
+    text-align: center;
+  }
+  @include desktop-sm {
+      padding: 15px 0;
+
+  }
+  @include desktop-md {
+    padding: 35px 0;
+  }
+  &__item {
+    display: inline-block;
+    &:not(:last-of-type) {
+      .action-btn {
+        margin-right: 15px;
+        @include tablet {
+          margin: 15px 0;
+        }
+      }
+    }
+    @include tablet {
+      display: block;
+    }
+    &--home {
+      .main-menu__link {
+        padding: 0 12px 0 0;
+      }
+      img {
+        width: 18px;
+      }
+    }
+    &--0 {
+      @include tablet {
+        padding: 10px 0;
+        text-align: center;
+      }
+      &:last-of-type {
+        @include desktop-sm {
+          margin-right: 20px;
+        }
+      }
+    }
+    &--1 {
+      display: block;
+      @include desktop-sm {
+        border-bottom: 1px solid $grey;
+      }
+      
+    }
+    &--2 {
+      border-bottom: 1px solid $grey;
+      display: block;
+    }
+  }
+  &__link {
+    display: inline-block;
+    color: $black;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: .5px;
+    text-decoration: none !important;
+    transition: color 0.35s ease-in-out;
+    -webkit-tap-highlight-color: transparent;
+    text-transform: uppercase;
+    &:hover {
+      color: $green;
+    }
+    @include tablet {
+      padding: 0 15px;
+    }
+    @include desktop-sm {
+      padding: 0 15px;
+    }
+    @include desktop-md {
+      padding: 0 20px;
+    }
+    @include tablet {
+      padding: 10px 0;
+    }
+  }
+}
+
+.produkty-menu-item > a {
+  position: relative;
+  &.hovered {
+    &:after {
+      background-color: transparent;
+      content: "";
+      left: 0;
+      right: 0;
+      height: 100px;
+      bottom: -100px;
+      width: 100%;
+      position: absolute;
+      @include tablet {
+        display: none;
+      }
+    }
+  }
+}
+
+
+.current-menu-item .gdn-ingr-menu__link,
+.current_page_parent .gdn-ingr-menu__link {
+  color: $black;
+}
+
+
+.footer-menu {
+  &__produkty {
+    width: 100%;
+    max-width: 350px;
+  }
+  &__glowne {
+    width: 340px;
+    align-self: flex-end;
+  }
+}
+
+.menu-item-image {
+  display: none;
+  height: 100%;
+  &.active {
+    display: block;
+  }
+}

@@ -1,0 +1,32 @@
+@use '../abstracts/' as *;
+// md
+@forward './footer/components-md/footer-form';
+@forward './footer/components-md/footer-menu';
+
+
+.footer {
+  border-top: none;
+  position: relative;
+  z-index: 0;
+  flex-shrink: 0;
+  overflow-x: hidden;
+  margin-top: -1px;
+  &-top {
+    padding: 50px;
+    position: relative;
+  }
+  &-bottom {
+      background-color: $black;
+      color: $white;
+      font-size: 1.4rem;
+      font-weight: 500;
+      padding: 25px 0;
+      text-align: center;
+      @include desktop-md {
+          padding: 50px 0;
+      }
+      * {
+          font-size: 1.4rem!important;
+      }
+  }
+}

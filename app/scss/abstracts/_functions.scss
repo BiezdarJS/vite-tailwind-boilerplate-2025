@@ -1,0 +1,90 @@
+@use "sass:map";
+@use "sass:list";
+@use "sass:string";
+@use "sass:math";
+
+// =============================================================================
+// Font Face
+// =============================================================================
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: woff2 woff) {
+  $src: null;
+
+  $extmods: (
+      eot: "?",
+      svg: "#" + str-replace($name, " ", "_")
+  );
+
+  $formats: (
+      otf: "opentype",
+      ttf: "truetype"
+  );
+
+  @each $ext in $exts {
+      $extmod: if(map.has-key($extmods, $ext), $ext + map.get($extmods, $ext), $ext);
+      $format: if(map.has-key($formats, $ext), map.get($formats, $ext), $ext);
+      $src: list.append($src, url(string.quote($path + "." + $extmod)) format(string.quote($format)), $separator: comma);
+  }
+
+  @font-face {
+      font-family: string.quote($name);
+      font-style: $style;
+      font-weight: $weight;
+      src: $src;
+  }
+}
+// Usage:
+// @include font-face('Open-Sans Regular', '../fonts/opensans-regular',normal, normal);
+
+@function textShadow($precision, $size, $color){
+  $value: null;
+  $offset: 0;
+  $length: $size * math.div(1, $precision) - 1;
+
+  @for $i from 0 through $length {
+    $offset: $offset + $precision;
+    $shadow: $offset + px $offset + px $color;
+    $value: list.append($value, $shadow, comma);
+  }
+
+  @return $value;
+}
+
+
+
+
+$mobile-width: 991px;
+$tablet-width: 1200px;
+$desktop-width: 1201px;
+$desktop-md-width: 1550px;
+$desktop-xl-width: 1900px;
+
+@mixin mobile {
+  @media (max-width: #{$mobile-width}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin desktop-sm {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin desktop-md {
+  @media (min-width: #{$desktop-md-width}) {
+    @content;
+  }
+}
+
+@mixin desktop-xl {
+  @media (min-width: #{$desktop-xl-width}) {
+    @content;
+  }
+}

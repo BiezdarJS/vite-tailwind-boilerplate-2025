@@ -1,0 +1,57 @@
+@use '../../../abstracts' as *;
+
+.footer-menu {
+  list-style-type: none;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0;
+  transition: all 0.15s ease-in-out;
+  padding: 0;
+  text-align: center;
+  @include tablet {
+    display: block;
+  }
+  &__wrap {
+    @include desktop-sm {
+      display: flex;
+    }
+  }
+  &__item {
+    display: inline-block;
+    &:not(:last-of-type) {
+      .action-btn {
+        margin-right: 15px;
+      }
+    }
+    @include tablet {
+      display: block;
+    }
+  }
+  &__link {
+    display: inline-block;
+    color: $white;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: .5px;
+    text-decoration: none !important;
+    transition: color 0.35s ease-in-out;
+    -webkit-tap-highlight-color: transparent;
+    text-transform: uppercase;
+    &:hover {
+      color: $green;
+    }
+    @include tablet {
+      padding: 0 15px;
+    }
+    @include desktop-sm {
+      padding: 0 15px;
+    }
+    @include desktop-md {
+      padding: 0 20px;
+    }
+    @include tablet {
+      padding: 10px 0;
+    }
+  }
+}

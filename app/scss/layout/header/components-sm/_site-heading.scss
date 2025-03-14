@@ -1,0 +1,25 @@
+@use '../../../abstracts' as *;
+
+.site-heading {
+  font-family: 'Lora', sans-serif;
+  font-size: 3.3rem;
+  font-weight: 700;
+  line-height: 5.4rem;
+  margin: 0 0 48px;
+  @include tablet {
+    line-height: 4rem;
+    text-align: center;
+    margin: 0 0 30px;
+  }
+  @include desktop-sm {
+    font-size: 3.3rem;
+    margin: 0 0 24px;
+  }
+  @include desktop-xl {
+    font-size: 3.8rem;
+    margin: 0 0 48px;
+  }
+  &--blue {
+    color: $granat;
+  }
+}
